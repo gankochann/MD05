@@ -49,11 +49,11 @@ public class BusController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable int id){
+    public ResponseEntity<?> delete(@PathVariable int id,@RequestParam int newStatus){
         return new ResponseEntity<>(ApiResp.builder()
                 .message("xoa xe bus thanh cong")
                 .success("true")
-                .data(busService.delete(id))
+                .data(busService.delete(id,newStatus))
                 .httpStatus(200)
                 .build(), HttpStatus.OK);
     }

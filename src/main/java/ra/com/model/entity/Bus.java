@@ -24,6 +24,6 @@ public class Bus {
     private int totalSeat;
     @Column(name = "image_bus")
     private String imageBus;
-    @Column(columnDefinition = "bit default 1" )
+    @Column(columnDefinition = "bit(2) default 1" )
     private Byte status;
 }

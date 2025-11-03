@@ -90,13 +90,13 @@ public class BusService {
 
     //xoa
 
-    public BusResp delete(int id){
+    public BusResp delete(int id,int newStatus){
         Bus bus = ibus.findById(id).orElseThrow(() -> new RuntimeException("khong ton tai xe bus ban dang tim"));
-        if(bus.getStatus() == 1){
-            bus.setStatus((byte) 2);
-        } else if (bus.getStatus() == 2) {
-            bus.setStatus((byte) 1);
-        }else {}
+        if(newStatus == 0 || newStatus == 1 || newStatus == 2) {
+            bus.setStatus((byte) newStatus);
+        }else {
+            throw new RuntimeException("trang thai laf 1 or 2 or 0");
+        }
        Bus newBus =  ibus.save(bus);
         return BusResp.builder()
                 .id(newBus.getId())
